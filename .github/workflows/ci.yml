@@ -29,7 +29,8 @@ jobs:
         working-directory: backend
 
       - name: Run Laravel tests
-        run: composer test
+        run: |
+          APP_KEY="$(php artisan key:generate --show)" composer test
         working-directory: backend
 
       - name: Set up Node.js
