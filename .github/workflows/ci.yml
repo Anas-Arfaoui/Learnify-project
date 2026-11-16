@@ -28,9 +28,14 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-interaction
         working-directory: backend
 
-      - name: Run Laravel tests
+      - name: Generate temporary Laravel test key
         run: |
-          APP_KEY="$(php artisan key:generate --show)" composer test
+          KEY="$(php -r 'echo "base64:".base64_encode(random_bytes(32));')"
+          echo "APP_KEY=$KEY" >> "$GITHUB_ENV"
+        working-directory: backend
+
+      - name: Run Laravel tests
+        run: composer test
         working-directory: backend
 
       - name: Set up Node.js
