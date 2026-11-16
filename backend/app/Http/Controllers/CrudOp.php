@@ -12,7 +12,7 @@ class CrudOp extends Controller
 //display
     public function index(Request $request)
     {
-        $table = User::all();
+        $table = User::withCount('quizzes')->get();
         return response()->json($table, 200);
     }
 
@@ -56,6 +56,28 @@ class CrudOp extends Controller
             'message' => 'User deleted successfully'
         ], 200);
     }
+
+//update
+
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $id,
+    ]);
+
+    $user = User::findOrFail($id);
+
+    $user->update([
+        'name' => $request->name,
+        'email' => $request->email
+    ]);
+
+    return response()->json([
+        'message' => 'User updated successfully',
+        'user' => $user
+    ]);
+}
 
 
     

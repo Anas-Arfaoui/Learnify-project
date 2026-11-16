@@ -1,0 +1,25 @@
+<div class="answers-container">
+
+  <h1>Correct Answers</h1>
+
+  <div
+    class="answer-card"
+    *ngFor="let item of answers; let i = index"
+  >
+
+    <h3>Question {{ i + 1 }}</h3>
+
+    <p class="question">
+      {{ item.question }}
+    </p>
+
+    <p class="correct">
+      Correct Answer: {{ item.answer }}
+    </p>
+
+  </div>
+
+
+  <button routerLink="/profile">Back to Profile</button>
+
+</div>

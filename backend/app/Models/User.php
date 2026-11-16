@@ -2,20 +2,19 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Result;
+use App\Models\Quiz;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
-     *
      * @var list<string>
      */
     protected $fillable = [
@@ -47,4 +46,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function results() {
+    return $this->hasMany(Result::class);
+}
+
+public function quizzes()
+{
+    return $this->hasMany(Quiz::class);
+}
+
 }

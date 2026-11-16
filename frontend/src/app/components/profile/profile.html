@@ -1,0 +1,104 @@
+<div class="profile-container">
+
+  <!--User-->
+  <section class="user-section">
+    <div class="user-card">
+      <div class="avatar">
+        <span class="avatar-icon"></span>
+      </div>
+      <h2 class="user-name" >Welcome Back! {{ user?.name || 'Student'  }}</h2>
+    </div>
+  </section>
+
+  <section class="history-section" *ngIf="results.length > 0">
+    <h2>My Quiz History</h2>
+
+    <!--Cards -->
+    <div class="history-stats">
+      <div class="stat-card total">
+        <div class="stat-icon"></div>
+        <div class="stat-label">Total Quizzes</div>
+        <div class="stat-value">{{ totalQuizzes }}</div>
+        <div class="stat-subtitle">Completed</div>
+      </div>
+
+      <div class="stat-card highest">
+        <div class="stat-icon"></div>
+        <div class="stat-label">Highest Score</div>
+        <div class="stat-value">{{ highestScore }}%</div>
+        <div class="stat-subtitle">Personal Best</div>
+      </div>
+
+      <div class="stat-card average">
+        <div class="stat-icon"></div>
+        <div class="stat-label">Average Score</div>
+        <div class="stat-value">{{ averageScore }}%</div>
+        <div class="stat-subtitle">Overall Performance</div>
+      </div>
+    </div>
+
+    <!--History-->
+    <table class="history-table">
+      <thead>
+        <tr>
+          <th>Quiz Title</th>
+          <th>Score</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of results">
+          <td>{{ r.quiz_title }}</td>
+          <td>{{ r.score }}</td>
+          <td>{{ r.date | date:'MMM d, yyyy' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!--rien-->
+  <section class="history-section" *ngIf="results.length === 0">
+    <h2>My Quiz History</h2>
+    
+    <div class="empty-state">
+      <div class="empty-state-icon"></div>
+      <p>No quizzes taken yet. Upload your files and generate your first quiz!</p>
+    </div>
+  </section>
+
+  <!-- Upload Section -->
+  <section class="upload-section">
+    <div class="upload-container">
+      <h1 class="upload-title">Upload Your Lecture Files</h1>
+      <p class="upload-subtitle">Drop your study materials here and let AI create personalized quizzes for you</p>
+      
+      <div class="upload-area" (drop)="onDrop($event)"  [class.drag-over]="isDragging">
+        <div class="upload-icon"></div>
+        <h3>Drag & Drop your files here</h3>
+        <p>or</p>
+        <button class="browse-button" type="button" (click)="fileInput.click()">Browse Files</button>
+        <p class="file-types">Supported: PDF, DOCX, TXT</p>
+        <input #fileInput type="file" class="file-input" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.txt" multiple>
+      </div>
+
+      <div class="files-list" *ngIf="uploadedFiles.length > 0">
+        <h3>Uploaded Files</h3>
+        <div class="file-item" *ngFor="let file of uploadedFiles; let i = index">
+          <div class="file-info">
+            <span class="file-icon"></span>
+            <div class="file-details">
+              <p class="file-name">{{ file.name }}</p>
+            </div>
+          </div>
+          <button class="remove-button" (click)="removeFile(i)">✕</button>
+        </div>
+      </div>
+
+      <button class="generate-button" *ngIf="uploadedFiles.length > 0" (click)="generateQuiz()">
+        <span class="button-icon"></span>
+        Generate Quiz
+      </button>
+    </div>
+  </section>
+
+</div>

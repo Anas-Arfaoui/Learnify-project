@@ -25,8 +25,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/quiz/{quiz}/submit', [QuizController::class,'submit']);
 
-
-
 });
 
 Route::middleware(['auth:sanctum'])->group(function () { 
@@ -37,4 +35,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/admin/users/{id}', [CrudOp::class, 'delete']);
 
 });
+
+Route::get('/my-results', [QuizController::class, 'myResults'])->middleware('auth:sanctum');
+Route::get('/quiz/{quiz}/correct-answers', [QuizController::class, 'correctAnswers'])->middleware('auth:sanctum');
+Route::post('/create-admin', [UserController::class, 'createAdmin'])->middleware('auth:sanctum');
 

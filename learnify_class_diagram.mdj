@@ -1,0 +1,104 @@
+{
+  "_type": "Project",
+  "name": "Learnify UML",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "name": "Model",
+      "ownedElements": [
+        {
+          "_type": "UMLClassDiagram",
+          "name": "Learnify Class Diagram",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "name": "User",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "id"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "name"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "email"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "role"
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "Quiz",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "id"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "title"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "difficulty"
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "Question",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "id"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "question_text"
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "Answer",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "id"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "text"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "is_correct"
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "Result",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "id"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "score"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

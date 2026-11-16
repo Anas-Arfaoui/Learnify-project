@@ -26,7 +26,7 @@ class GeminiAIClient implements AIClientInterface
      */
     public function generateQuiz(string $text, string $difficulty): array
     {
-        /* Build prompt */
+        /* 7adher prompt */
         $prompt = $this->buildPrompt($text, $difficulty);
 
         /*Send request (to gemini) */

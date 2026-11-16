@@ -21,9 +21,7 @@ class QuizGenerationService
         $this->ai = $ai;
     }
 
-    /**
-     * Generate quiz from uploaded file
-     */
+ 
     public function generateFromFile(UploadedFile $file, User $user, string $difficulty): Quiz {
 
         return DB::transaction(function () use ($file, $user, $difficulty) {

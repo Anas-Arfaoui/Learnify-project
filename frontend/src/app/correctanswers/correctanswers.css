@@ -1,0 +1,397 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 2rem;
+  background-attachment: fixed;
+}
+
+.answers-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 0;
+  animation: fadeIn 0.6s ease;
+}
+
+/* ============================================
+   HEADER SECTION - MATCHING STYLE
+   ============================================ */
+
+.answers-container > h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: rgb(20, 19, 19);
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: 1px;
+  animation: fadeInDown 0.8s ease;
+}
+
+/* ============================================
+   ANSWER CARDS - PURPLE THEME
+   ============================================ */
+
+.answer-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease backwards;
+}
+
+/* Stagger animation for each card */
+.answer-card:nth-child(2) { animation-delay: 0.1s; }
+.answer-card:nth-child(3) { animation-delay: 0.2s; }
+.answer-card:nth-child(4) { animation-delay: 0.3s; }
+.answer-card:nth-child(5) { animation-delay: 0.4s; }
+.answer-card:nth-child(6) { animation-delay: 0.5s; }
+.answer-card:nth-child(7) { animation-delay: 0.6s; }
+.answer-card:nth-child(8) { animation-delay: 0.7s; }
+.answer-card:nth-child(9) { animation-delay: 0.8s; }
+.answer-card:nth-child(10) { animation-delay: 0.9s; }
+
+/* Purple gradient top border */
+.answer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.answer-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 50px rgba(102, 126, 234, 0.3);
+}
+
+/* ============================================
+   QUESTION NUMBER BADGE - PURPLE STYLE
+   ============================================ */
+
+.answer-card h3 {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+}
+
+.answer-card:hover h3 {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+/* ============================================
+   QUESTION TEXT
+   ============================================ */
+
+.answer-card .question {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 1.8rem;
+  padding: 1.2rem;
+  background: #f8f9ff;
+  border-radius: 12px;
+  border-left: 5px solid #667eea;
+  transition: all 0.3s ease;
+}
+
+.answer-card:hover .question {
+  background: #f0f4ff;
+  border-left-color: #764ba2;
+  transform: translateX(5px);
+}
+
+/* ============================================
+   CORRECT ANSWER DISPLAY - PURPLE ACCENT
+   ============================================ */
+
+.answer-card .correct {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #764ba2;
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  border: 2px solid #667eea;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+
+.answer-card:hover .correct {
+  border-color: #764ba2;
+  box-shadow: 0 8px 25px rgba(118, 75, 162, 0.25);
+  transform: scale(1.02);
+}
+
+/* Highlight effect on hover */
+.answer-card .correct::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.answer-card:hover .correct::after {
+  left: 100%;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 968px) {
+  .answers-container {
+    max-width: 900px;
+  }
+
+  .answers-container > h1 {
+    font-size: 3rem;
+  }
+
+  .answer-card {
+    padding: 2rem;
+  }
+
+  .answer-card .question {
+    font-size: 1.2rem;
+  }
+
+  .answer-card .correct {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  .answers-container {
+    padding: 2rem 0;
+  }
+
+  .answers-container > h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .answer-card {
+    padding: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .answer-card h3 {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.5rem;
+  }
+
+  .answer-card .question {
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+
+  .answer-card .correct {
+    font-size: 1rem;
+    padding: 1.2rem 1.5rem;
+  }
+
+  .answer-card .correct::before {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .answers-container > h1 {
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+  }
+
+  .answer-card {
+    padding: 1.5rem;
+  }
+
+  .answer-card h3 {
+    font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .answer-card .question {
+    font-size: 1rem;
+    padding: 0.9rem;
+    border-left-width: 4px;
+  }
+
+  .answer-card .correct {
+    font-size: 0.95rem;
+    padding: 1rem 1.2rem;
+    flex-direction: row;
+  }
+}
+
+/* ============================================
+   ANIMATIONS - MATCHING PROFILE PAGE
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   ADDITIONAL POLISH
+   ============================================ */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar - Purple theme */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5570d8 0%, #653d8e 100%);
+}
+
+/* Selection color - Purple */
+::selection {
+  background: #667eea;
+  color: white;
+}
+
+::-moz-selection {
+  background: #667eea;
+  color: white;
+}
+
+/* Focus states for accessibility */
+.answer-card:focus-within {
+  outline: 3px solid #667eea;
+  outline-offset: 4px;
+}
+
+/* ============================================
+   BACK TO PROFILE BUTTON
+   ============================================ */
+
+.answers-container > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 3rem auto 0;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: fadeInUp 1s ease;
+}
+
+.answers-container > button::before {
+  content: '←';
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.answers-container > button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+.answers-container > button:hover::before {
+  transform: translateX(-5px);
+}
+
+.answers-container > button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
+}
+
+/* Loading state (optional) */
+.answers-container.loading .answer-card {
+  opacity: 0.5;
+  pointer-events: none;
+}
